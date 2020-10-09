@@ -34,17 +34,17 @@ function get_average_sum(array) {
         return obj;
 
     } else {
-        console.log("input error");
+        return false;
     }
 
   
 }
 
-let array = [4, 3, 5, 10, 2, 8, 1, 4, 5, 8, 5];
+let array = [4, 3, 5, 10, 2, 8, 1, 4];
 
 console.log(get_average_sum(array));
 
-//get_average_sum();
+
 
 
 
