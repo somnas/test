@@ -16,9 +16,27 @@ Alla tecken som inte är a-z eller någon av ovanstående (t ex kommatecken, pun
 
 */
 
-function safe_string() {
-
+function safe_string(string) {
+    let regex = /[<|>|å|ä|ö|,|']/g;
+    let safeString = string.replace(regex, function(match) {
+        if (match === "<") {
+            return "&lt;";
+        } else if (match === ">") {
+            return "&gt;"
+        } else if (match === "å") {
+            return "&aring;";
+        } else if (match === "ä") {
+            return "&auml;";
+        } else if (match === "ö") {
+            return "&ouml;";
+        } else if (match === ",") {
+            return "";
+        } else {
+            return "&apos;";
+        }
+    });
+    return safeString;
 }
 
 console.log( safe_string( "<h1>Sjörövare, O'hoj</h1>" ) ); // Expected output: &lt;h1&gt;Sj&ouml;r&ouml;vare O&apos;hoj&lt;/h1&gt;
-
+                                                                             //&lt;h1&gt;Sj&ouml;r&ouml;vare O&apos;hoj&lt;/h1&gt;
